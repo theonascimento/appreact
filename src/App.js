@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./Layout";
+import Inicio from "./Inicio";
+import Marvel from "./Marvel";
+import Pokemon from "./Pokemon";
+import StarWars from "./StarWars";
+import NotFound from "./NotFound";
 
-function App() {
+const APP = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Inicio />} />
+          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/marvel" element={<Marvel />} />
+          <Route path="/starwars" element={<StarWars />} />
+          <Route path="/pokemon" element={<Pokemon />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
-export default App;
+export default APP;
